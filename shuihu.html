@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>水浒传 - 经典名著阅读网</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>经典名著阅读网</h1>
+  <nav>
+    <a href="index.html">首页</a>
+    <a href="list.html">作品列表</a>
+    <a href="zuozhejianjie.html">作者简介</a>
+    <a href="readingrecord.html">阅读记录</a>
+    <a href="javascript:history.back()">返回</a>
+  </nav>
+</header>
+
+<main class="container">
+  <div class="reader-container">
+    <div class="reader-tools">
+      <button onclick="changeFontSize(1)" title="增大字体">A+</button>
+      <button onclick="changeFontSize(-1)" title="缩小字体">A-</button>
+      <button onclick="resetFont()" title="恢复默认字体">默认字体</button>
+      <button onclick="toggleMode()" title="切换夜间模式">🌙 夜间模式</button>
+      <button onclick="window.print()" title="打印本页">🖨️ 打印</button>
+    </div>
+
+    <article id="content">
+      <h2>《水浒传》第一回 张天师祈禳瘟疫 洪太尉误走妖魔</h2>
+      <p>
+        话说大宋仁宗天子在位，嘉祐三年三月三日五更三点，天子驾坐紫宸殿，受百官朝贺。但见：
+      </p>
+      <p>
+        祥云迷凤阁，瑞气罩龙楼。含烟御柳拂旌旗，带露宫花迎剑戟。天香影里，玉簪朱履聚丹墀；仙乐声中，绣袄锦衣扶御驾。珍珠帘卷，黄金殿上现金舆；凤羽扇开，白玉阶前停宝辇。隐隐净鞭三下响，层层文武两班齐。
+      </p>
+      <p>
+        当有殿头官喝道："有事出班早奏，无事卷帘退朝。"只见班部丛中，宰相赵哲、参政文彦博出班奏曰："目今京师瘟疫盛行，伤损军民甚多。伏望陛下释罪宽恩，省刑薄税，祈禳天灾，救济万民。"天子听奏，急敕翰林院随即草诏，一面降赦天下罪囚，应有民间税赋，悉皆赦免；一面命在京宫观寺院，修设好事禳灾。
+      </p>
+      <p>
+        不料其年瘟疫转盛。仁宗天子闻知，龙体不安，复会百官计议。向那班部中，有一大臣越班启奏。天子看时，乃是参知政事范仲淹。拜罢起居，奏曰："目今天灾盛行，军民涂炭，日夕不能聊生。以臣愚意，要禳此灾，可宣嗣汉天师星夜临朝，就京师禁院，修设三千六百分罗天大醮，奏闻上帝，可以禳保民间瘟疫。"仁宗天子准奏。急令翰林学士草诏一道，天子御笔亲书，并降御香一炷，钦差内外提点殿前太尉洪信为天使，前往江西信州龙虎山，宣请嗣汉天师张真人星夜来朝，祈禳瘟疫。
+      </p>
+      <p>
+        次日早朝，洪太尉领了圣敕，辞别天子，背了诏书，盛了御香，带了数十人，上了铺马，一行部从，离了东京，取路径投信州贵溪县来。于路上但见：
+      </p>
+      <p>
+        遥山叠翠，远水澄清。奇花绽锦绣铺林，嫩柳舞金丝拂地。风和日暖，时过野店山村；路直沙平，夜宿邮亭驿馆。罗衣荡漾红尘内，骏马驰驱紫陌中。
+      </p>
+    </article>
+    
+    <div class="chapter-nav" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e0e0e0; text-align: center;">
+      <button onclick="alert('下一回内容正在开发中...')" style="padding: 10px 25px; background-color: #8b0000; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 0 10px;">
+        上一回
+      </button>
+      <span style="margin: 0 15px; color: #666;">第一回</span>
+      <button onclick="alert('下一回内容正在开发中...')" style="padding: 10px 25px; background-color: #8b0000; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 0 10px;">
+        下一回
+      </button>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 经典名著阅读网 | 古典文学传承，经典永流传</p>
+</footer>
+
+<script>
+  let fontSize = 18;
+  
+  function changeFontSize(step) {
+    fontSize += step;
+    if (fontSize < 12) fontSize = 12;
+    if (fontSize > 30) fontSize = 30;
+    document.getElementById("content").style.fontSize = fontSize + "px";
+    
+    // 保存用户偏好
+    localStorage.setItem('fontSize', fontSize);
+  }
+  
+  function resetFont() {
+    fontSize = 18;
+    document.getElementById("content").style.fontSize = "18px";
+    localStorage.setItem('fontSize', fontSize);
+  }
+  
+  function toggleMode() {
+    document.body.classList.toggle("dark");
+    const isDark = document.body.classList.contains("dark");
+    localStorage.setItem('darkMode', isDark);
+    
+    // 更新按钮文本
+    const btn = document.querySelector('.reader-tools button[onclick="toggleMode()"]');
+    btn.textContent = isDark ? "☀️ 日间模式" : "🌙 夜间模式";
+  }
+  
+  // 初始化设置
+  window.onload = function() {
+    // 恢复字体大小
+    const savedFontSize = localStorage.getItem('fontSize');
+    if (savedFontSize) {
+      fontSize = parseInt(savedFontSize);
+      document.getElementById("content").style.fontSize = fontSize + "px";
+    }
+    
+    // 恢复夜间模式
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    if (isDarkMode) {
+      document.body.classList.add("dark");
+      const btn = document.querySelector('.reader-tools button[onclick="toggleMode()"]');
+      if (btn) btn.textContent = "☀️ 日间模式";
+    }
+  }
+</script>
+
+</body>
+</html>
